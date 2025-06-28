@@ -17,7 +17,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100 shadow-sm max-w-7xl mx-auto ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -55,7 +55,7 @@ const Navbar = () => {
             </Link>
           </div>
           <div>
-            <a className="text-3xl text-secondary font-bold hidden md:block lg:block">
+            <a className="text-2xl text-secondary font-bold hidden md:block lg:block">
               Historical Artifacts
             </a>
           </div>

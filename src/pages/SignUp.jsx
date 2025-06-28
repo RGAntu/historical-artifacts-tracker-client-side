@@ -1,15 +1,88 @@
-import React from "react";
+import React, { use, useState } from "react";
 import Navbar from "../components/Navbar";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import Footer from "../components/Footer";
+import { toast, ToastContainer } from "react-toastify";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../firebase/firebase.init";
+import { AuthContext } from "../contexts/AuthContext";
 
 const SignUp = () => {
+  const { createUser, setUser, updateUser } = use(AuthContext);
+  const [passwordError, setPasswordError] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(createUser);
+
+  const provider = new GoogleAuthProvider();
+
+  const handleGoogleSignIn = () => {
+    console.log("Google sign in clicked");
+
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log(result);
+        toast.success("Login Successfull!");
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Login failed: " + error.message);
+      });
+  };
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photo = form.photo.value;
+    const password = form.password.value;
+    if (/[A-Z]/.test(password)) {
+      setPasswordError("Password must include an uppercase letter");
+    }
+    if (/[a-z]/.test(password)) {
+      setPasswordError("Password must include an lowercase letter");
+    }
+    if (password.length >= 6) {
+      setPasswordError("Password must be at least 6 characters long.");
+    } else {
+      setPasswordError("");
+    }
+    console.log({ name, email, photo, password });
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        updateUser({ displayName: name, email: email, photoURL: photo })
+          .then(() => {
+            setUser({
+              ...user,
+              displayName: name,
+              email: email,
+              photoURL: photo,
+            });
+            navigate("/");
+          })
+          .catch((error) => {
+            console.log(error);
+            setUser(user);
+          });
+
+        toast.success("Sign Up Successfull!");
+      })
+
+      .catch((error) => {
+        // console.error(error);
+        toast.error("Sign Up failed: " + error.message);
+      });
+  };
   return (
     <div>
       <div>
         <Navbar></Navbar>
       </div>
+      <ToastContainer></ToastContainer>
       <div className="flex justify-center items-center min-h-screen">
         <div className="card  w-full max-w-md shrink-0 shadow-2xl py-5 border-1 border-accent">
           <h1 className="font-semibold text-2xl text-center">
@@ -18,7 +91,7 @@ const SignUp = () => {
           <p className="text-sm text-center text mt-2">
             Join Historical Artifacts to explore and share ancient treasures
           </p>
-          <form className="card-body">
+          <form onSubmit={handleSignUp} className="card-body">
             <fieldset className="fieldset">
               {/* name  */}
               <label className="label text-sm font-medium text-secondary">
@@ -64,6 +137,9 @@ const SignUp = () => {
                 name="password"
                 placeholder="Your Password"
               />
+              {passwordError && (
+                <p className="text-red-400 text-xs">{passwordError}</p>
+              )}
               {/* signUp btn  */}
               <button
                 type="submit"
@@ -74,7 +150,11 @@ const SignUp = () => {
               </button>
               <div className="divider">OR</div>
               {/* Google btn  */}
-              <button type="button" className="btn">
+              <button
+                onClick={handleGoogleSignIn}
+                type="button"
+                className="btn"
+              >
                 {" "}
                 <FcGoogle size={24} /> Continue with Google
               </button>

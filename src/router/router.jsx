@@ -5,6 +5,8 @@ import AllArtifacts from "../pages/AllArtifacts/AllArtifacts";
 import AddArtifacts from "../pages/AddArtifacts/AddArtifacts";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
+import LikedArtifacts from "../pages/LikedArtifacts/LikedArtifacts";
+import MyArtifacts from "../pages/MyArtifacts/MyArtifacts";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
         path: "addArtifacts",
         element: <AddArtifacts></AddArtifacts>,
       },
+      {
+        path: "myArtifacts",
+        element: <MyArtifacts></MyArtifacts>,
+      },
+      {
+        path: "likedArtifacts",
+        element: <LikedArtifacts></LikedArtifacts>,
+      },
     ],
   },
   {
@@ -31,8 +41,8 @@ const router = createBrowserRouter([
   },
   {
     path: "signUp",
-    element: <SignUp></SignUp>
-  }
+    element: <SignUp></SignUp>,
+  },
 ]);
 
 export default router;

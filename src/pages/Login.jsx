@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
-import { ToastContainer } from "react-toastify";
 import Footer from "../components/Footer";
 
 const Login = () => {
@@ -11,7 +10,6 @@ const Login = () => {
       <div>
         <Navbar></Navbar>
       </div>
-      <ToastContainer />
       <div className="flex justify-center bg-white items-center min-h-screen ">
         <div className="card w-full bg-[#F9FAFB] max-w-md shrink-0 shadow-2xl py-5 px-5 border-1 border-accent">
           <h1 className="font-semibold text-2xl text-center">
@@ -61,7 +59,7 @@ const Login = () => {
                 <FcGoogle size={24} />
                 Continue with Google
               </button>
-              <p className="font-semibold pt-5">
+              <p className="font-semibold text-sm pt-5">
                 Don't have an account ?{" "}
                 <Link
                   className=" font-extrabold text-secondary hover:underline"

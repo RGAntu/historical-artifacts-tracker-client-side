@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router";
 import Footer from "../components/Footer";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../firebase/firebase.init";
 import { AuthContext } from "../contexts/AuthContext";
@@ -82,7 +82,6 @@ const SignUp = () => {
       <div>
         <Navbar></Navbar>
       </div>
-      <ToastContainer></ToastContainer>
       <div className="flex justify-center items-center min-h-screen">
         <div className="card  w-full max-w-md shrink-0 shadow-2xl py-5 border-1 border-accent">
           <h1 className="font-semibold text-2xl text-center">

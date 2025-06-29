@@ -9,7 +9,7 @@ import { auth } from "../firebase/firebase.init";
 import { AuthContext } from "../contexts/AuthContext";
 
 const Login = () => {
-    const [error, setError] = useState("");
+  const [error, setError] = useState("");
   const { logIn } = use(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
@@ -62,7 +62,6 @@ const Login = () => {
       <div>
         <Navbar></Navbar>
       </div>
-      <ToastContainer></ToastContainer>
       <div className="flex justify-center bg-white items-center min-h-screen ">
         <div className="card w-full bg-[#F9FAFB] max-w-md shrink-0 shadow-2xl py-5 px-5 border-1 border-accent">
           <h1 className="font-semibold text-2xl text-center">
@@ -108,7 +107,11 @@ const Login = () => {
               </button>
               <div className="divider">OR</div>
               {/* google btn  */}
-              <button onClick={handleGoogleSignIn} type="button" className="btn text-secondary ">
+              <button
+                onClick={handleGoogleSignIn}
+                type="button"
+                className="btn text-secondary "
+              >
                 {" "}
                 <FcGoogle size={24} />
                 Continue with Google

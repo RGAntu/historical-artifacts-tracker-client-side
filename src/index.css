@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui";
-
+@import "flowbite";
 :root {
   --color-primary: #DB7307;
   --color-secondary: #111827;

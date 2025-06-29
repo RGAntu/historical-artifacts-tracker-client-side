@@ -2,8 +2,9 @@ import React, { useState, useContext } from "react";
 import { Link, NavLink } from "react-router"; 
 import { AuthContext } from "../contexts/AuthContext";
 import { toast } from "react-toastify";
-import { FaUserCircle } from "react-icons/fa";
-
+import { IoBookOutline } from "react-icons/io5";
+import { SlLike } from "react-icons/sl";
+import { IoIosLogOut } from "react-icons/io";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -69,9 +70,9 @@ const Navbar = () => {
                   <p className="text-sm font-semibold">{user.displayName || "User"}</p>
                 </div>
                 <ul className="menu">
-                  <li><Link to="/myArtifacts">My Artifacts</Link></li>
-                  <li><Link to="/likedArtifacts">Liked Artifacts</Link></li>
-                  <li><button onClick={handleLogOut}>Logout</button></li>
+                  <li><Link to="/myArtifacts"><IoBookOutline /> My Artifacts</Link></li>
+                  <li><Link to="/likedArtifacts"><SlLike /> Liked Artifacts</Link></li>
+                  <li><button onClick={handleLogOut}> <IoIosLogOut />Logout</button></li>
                 </ul>
               </div>
             )}

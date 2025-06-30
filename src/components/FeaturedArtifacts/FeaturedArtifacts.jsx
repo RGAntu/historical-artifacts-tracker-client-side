@@ -39,6 +39,11 @@ const FeaturedArtifacts = () => {
           </div>
         ))}
       </div>
+      <div className='text-center my-5'>
+        <Link to="/allArtifacts" className="btn text-primary border-primary ">
+                  See All Artifacts
+                </Link>
+      </div>
     </div>
     );
 };

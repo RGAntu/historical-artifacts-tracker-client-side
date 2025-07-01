@@ -1,19 +1,40 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 const AllArtifacts = () => {
-     const [artifacts, setArtifacts] = useState([]);
+  const [artifacts, setArtifacts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    axios
-      .get("http://localhost:3000/artifacts") 
-      .then((res) => setArtifacts(res.data))
-      .catch((err) => console.error("Error fetching artifacts:", err));
-  }, []);
-    return (
-        <div className="my-10 max-w-7xl mx-auto px-4">
+    const delayDebounce = setTimeout(() => {
+      const url = searchTerm
+        ? `http://localhost:3000/artifacts/search?name=${encodeURIComponent(
+            searchTerm
+          )}`
+        : `http://localhost:3000/artifacts`;
+
+      axios
+        .get(url)
+        .then((res) => setArtifacts(res.data))
+        .catch((err) => console.error("Error fetching artifacts:", err));
+    }, 300);
+
+    return () => clearTimeout(delayDebounce);
+  }, [searchTerm]);
+  return (
+    <div className="my-10 max-w-7xl mx-auto px-4">
       <h2 className="text-3xl font-bold mb-6 text-center">All Artifacts</h2>
+
+      <div className="mb-6 text-center">
+        <input
+          type="text"
+          placeholder="Search artifacts by name..."
+          className="input input-bordered w-full max-w-md"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {artifacts.map((artifact) => (
@@ -44,7 +65,7 @@ const AllArtifacts = () => {
         ))}
       </div>
     </div>
-    );
+  );
 };
 
 export default AllArtifacts;

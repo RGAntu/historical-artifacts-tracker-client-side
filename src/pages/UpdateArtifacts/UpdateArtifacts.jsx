@@ -4,6 +4,9 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useNavigate, useParams } from 'react-router';
 import Loading from '../../components/Loading';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+import { Helmet } from 'react-helmet-async';
 
 const UpdateArtifacts = () => {
       const { id } = useParams();
@@ -45,7 +48,13 @@ const UpdateArtifacts = () => {
 
   if (!artifact) return <Loading></Loading>;
     return (
-         <div className="max-w-4xl mx-auto my-10 p-6 bg-white shadow rounded">
+         <div>
+          <Navbar></Navbar>
+          <div>
+            <div className="max-w-4xl mx-auto my-10 p-6 bg-white shadow rounded">
+              <Helmet>
+        <title>Update Artifacts | Historical Artifacts Tracker</title>
+      </Helmet>
       <h2 className="text-2xl font-bold mb-6 text-center">Update Artifact</h2>
       <form onSubmit={handleSubmit} className="grid gap-6 md:grid-cols-2">
         <div>
@@ -91,6 +100,9 @@ const UpdateArtifacts = () => {
         </div>
       </form>
     </div>
+          </div>
+          <Footer></Footer>
+         </div>
     );
 };
 

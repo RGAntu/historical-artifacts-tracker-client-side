@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthContext";
+import { Helmet } from "react-helmet-async";
 
 const AddArtifacts = () => {
   const { user } = useContext(AuthContext);
@@ -57,6 +58,9 @@ const AddArtifacts = () => {
   };
   return (
     <div className="max-w-4xl mx-auto my-10 p-6 bg-white shadow rounded">
+      <Helmet>
+        <title>Add Artifacts | Historical Artifacts Tracker</title>
+      </Helmet>
       <h2 className="text-2xl font-bold mb-6">Add New Artifact</h2>
       <form onSubmit={handleSubmit} className="grid gap-6 md:grid-cols-2">
         <div>

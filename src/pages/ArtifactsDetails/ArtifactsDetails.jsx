@@ -7,6 +7,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import Loading from "../../components/Loading";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
+import { Helmet } from "react-helmet-async";
 
 const ArtifactsDetails = () => {
   const { user } = useContext(AuthContext);
@@ -74,6 +75,9 @@ const ArtifactsDetails = () => {
       <Navbar></Navbar>
       <div>
         <div className="max-w-6xl mx-auto p-6 mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Helmet>
+        <title>Artifacts Details | Historical Artifacts Tracker</title>
+      </Helmet>
           <img
             src={artifact.imageUrl}
             alt={artifact.name}

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router";
 
 const AllArtifacts = () => {
@@ -24,6 +25,9 @@ const AllArtifacts = () => {
   }, [searchTerm]);
   return (
     <div className="my-10 max-w-7xl mx-auto px-4">
+      <Helmet>
+        <title>All Artifacts | Historical Artifacts Tracker</title>
+      </Helmet>
       <h2 className="text-3xl font-bold mb-6 text-center">All Artifacts</h2>
 
       <div className="mb-6 text-center">

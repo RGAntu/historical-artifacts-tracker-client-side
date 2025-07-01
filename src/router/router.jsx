@@ -10,6 +10,7 @@ import MyArtifacts from "../pages/MyArtifacts/MyArtifacts";
 import PrivateRoute from "../pages/PrivateRoute/PrivateRoute";
 import ArtifactsDetails from "../pages/ArtifactsDetails/ArtifactsDetails";
 import UpdateArtifacts from "../pages/UpdateArtifacts/UpdateArtifacts";
+import Error from "../components/Error";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
     path: "signUp",
     element: <SignUp></SignUp>,
   },
+  {
+    path: "*",
+    element: <Error></Error>
+  }
 ]);
 
 export default router;

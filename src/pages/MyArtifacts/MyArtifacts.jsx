@@ -2,11 +2,12 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthContext";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const MyArtifacts = () => {
   const { user } = useContext(AuthContext);
   const [artifacts, setArtifacts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (user?.email) {
@@ -23,6 +24,7 @@ const MyArtifacts = () => {
       await axios.delete(`http://localhost:3000/artifacts/${id}`);
       setArtifacts((prev) => prev.filter((a) => a._id !== id));
       toast.success("Artifact deleted successfully");
+      navigate("/allArtifacts");
     } catch {
       toast.error("Delete failed");
     }

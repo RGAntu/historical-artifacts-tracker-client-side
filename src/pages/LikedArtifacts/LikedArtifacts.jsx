@@ -3,7 +3,7 @@ import React from 'react';
 const LikedArtifacts = () => {
     return (
         <div>
-            <h2>Like Artifacts</h2>
+            <h2>Liked Artifacts</h2>
         </div>
     );
 };

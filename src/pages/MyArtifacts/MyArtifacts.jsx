@@ -41,7 +41,7 @@ const MyArtifacts = () => {
 
   return (
     <div className="max-w-5xl mx-auto my-10 p-4">
-      <h2 className="text-3xl font-bold mb-6">My Artifacts</h2>
+      <h2 className="text-3xl font-bold text-center mb-6">My Artifacts</h2>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {artifacts.map((artifact) => (
           <div key={artifact._id} className="card bg-base-100 shadow-xl">

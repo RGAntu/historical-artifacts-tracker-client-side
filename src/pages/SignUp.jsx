@@ -39,18 +39,22 @@ const SignUp = () => {
     const email = form.email.value;
     const photo = form.photo.value;
     const password = form.password.value;
-    if (/[A-Z]/.test(password)) {
-      setPasswordError("Password must include an uppercase letter");
+
+    if (!/[A-Z]/.test(password)) {
+      setPasswordError("Password must include at least one uppercase letter.");
+      return;
     }
-    if (/[a-z]/.test(password)) {
-      setPasswordError("Password must include an lowercase letter");
+    if (!/[a-z]/.test(password)) {
+      setPasswordError("Password must include at least one lowercase letter.");
+      return;
     }
-    if (password.length >= 6) {
+    if (password.length < 6) {
       setPasswordError("Password must be at least 6 characters long.");
-    } else {
-      setPasswordError("");
+      return;
     }
-    console.log({ name, email, photo, password });
+
+    setPasswordError(""); // Clear any previous errors
+
     createUser(email, password)
       .then((result) => {
         const user = result.user;
@@ -69,11 +73,9 @@ const SignUp = () => {
             setUser(user);
           });
 
-        toast.success("Sign Up Successfull!");
+        toast.success("Sign Up Successful!");
       })
-
       .catch((error) => {
-        // console.error(error);
         toast.error("Sign Up failed: " + error.message);
       });
   };

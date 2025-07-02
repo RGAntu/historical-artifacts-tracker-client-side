@@ -15,7 +15,7 @@ const UpdateArtifacts = () => {
   const [artifact, setArtifact] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/artifacts/${id}`)
+    axios.get(`https://historical-artifacts-tracker-server-six.vercel.app/artifacts/${id}`)
       .then(res => setArtifact(res.data))
       .catch(() => toast.error("Failed to load artifact"));
   }, [id]);
@@ -38,7 +38,7 @@ const UpdateArtifacts = () => {
     };
 
     try {
-      await axios.put(`http://localhost:3000/artifacts/${id}`, updatedData);
+      await axios.put(`https://historical-artifacts-tracker-server-six.vercel.app/artifacts/${id}`, updatedData);
       toast.success("Artifact updated successfully!");
       navigate("/myArtifacts");
     } catch {

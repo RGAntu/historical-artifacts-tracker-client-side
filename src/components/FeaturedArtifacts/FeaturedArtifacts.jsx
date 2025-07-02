@@ -7,7 +7,7 @@ const FeaturedArtifacts = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/artifacts/featured")
+      .get("https://historical-artifacts-tracker-server-six.vercel.app/artifacts/featured")
       .then((res) => setArtifacts(res.data))
       .catch((error) => {
         console.error("Error fetching featured artifacts:", error);

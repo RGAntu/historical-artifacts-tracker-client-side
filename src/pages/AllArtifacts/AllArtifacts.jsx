@@ -10,10 +10,10 @@ const AllArtifacts = () => {
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
       const url = searchTerm
-        ? `http://localhost:3000/artifacts/search?name=${encodeURIComponent(
+        ? `https://historical-artifacts-tracker-server-six.vercel.app/artifacts/search?name=${encodeURIComponent(
             searchTerm
           )}`
-        : `http://localhost:3000/artifacts`;
+        : `https://historical-artifacts-tracker-server-six.vercel.app/artifacts`;
 
       axios
         .get(url)
@@ -40,9 +40,9 @@ const AllArtifacts = () => {
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-6">
         {artifacts.map((artifact) => (
-          <div key={artifact._id} className="card bg-base-100 shadow-md">
+          <div key={artifact._id} className="card bg-base-100 border-1 shadow-md">
             <figure>
               <img
                 src={artifact.imageUrl}
@@ -53,10 +53,10 @@ const AllArtifacts = () => {
             <div className="card-body">
               <h3 className="text-xl font-semibold">{artifact.name}</h3>
               <p className="text-sm text-gray-600">
-                {artifact.origin} • {artifact.period}
+                {artifact.origin} . {artifact.period}
               </p>
               <p className="text-sm text-gray-600">Likes: {artifact.likes}</p>
-              <div className="card-actions justify-end mt-4">
+              <div className="card-actions justify-start mt-4">
                 <Link
                   to={`/artifact/${artifact._id}`}
                   className="btn btn-primary btn-sm"

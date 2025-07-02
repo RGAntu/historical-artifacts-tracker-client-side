@@ -35,7 +35,7 @@ const AddArtifacts = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/artifacts",
+        "https://historical-artifacts-tracker-server-six.vercel.app/artifacts",
         newArtifact
       );
       if (res.data.insertedId) {

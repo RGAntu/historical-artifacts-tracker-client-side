@@ -68,7 +68,7 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     loader: ({ params }) =>
-      fetch(`http://localhost:3000/artifacts/${params.id}`),
+      fetch(`https://historical-artifacts-tracker-server-six.vercel.app/artifacts/${params.id}`),
   },
   {
     path: "login",

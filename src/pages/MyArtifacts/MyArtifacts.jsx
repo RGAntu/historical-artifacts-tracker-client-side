@@ -12,7 +12,7 @@ const MyArtifacts = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:3000/my-artifacts?email=${user.email}`)
+        .get(`https://historical-artifacts-tracker-server-six.vercel.app/my-artifacts?email=${user.email}`)
         .then((res) => setArtifacts(res.data))
         .catch(() => toast.error("Failed to fetch artifacts"));
     }
@@ -21,7 +21,7 @@ const MyArtifacts = () => {
   const handleDelete = async (id) => {
     if (!confirm("Are you sure you want to delete this artifact?")) return;
     try {
-      await axios.delete(`http://localhost:3000/artifacts/${id}`);
+      await axios.delete(`https://historical-artifacts-tracker-server-six.vercel.app/artifacts/${id}`);
       setArtifacts((prev) => prev.filter((a) => a._id !== id));
       toast.success("Artifact deleted successfully");
       navigate("/allArtifacts");

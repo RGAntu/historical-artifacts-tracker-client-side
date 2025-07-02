@@ -19,7 +19,7 @@ const ArtifactsDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/artifacts/${id}`)
+      .get(`https://historical-artifacts-tracker-server-six.vercel.app/artifacts/${id}`)
       .then((res) => {
         setArtifact(res.data);
         setHasLiked(res.data.likedBy?.includes(user?.email));
@@ -36,7 +36,7 @@ const ArtifactsDetails = () => {
     setLikeDisabled(true);
     try {
       const res = await axios.patch(
-        `http://localhost:3000/artifacts/${artifact._id}/like`,
+        `https://historical-artifacts-tracker-server-six.vercel.app/artifacts/${artifact._id}/like`,
         { email: user.email }
       );
 

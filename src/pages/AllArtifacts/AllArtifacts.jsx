@@ -42,7 +42,10 @@ const AllArtifacts = () => {
 
       <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-6">
         {artifacts.map((artifact) => (
-          <div key={artifact._id} className="card bg-base-100 border-1 shadow-md">
+          <div
+            key={artifact._id}
+            className="card bg-base-100 border-1 shadow-md"
+          >
             <figure>
               <img
                 src={artifact.imageUrl}
@@ -53,7 +56,8 @@ const AllArtifacts = () => {
             <div className="card-body">
               <h3 className="text-xl font-semibold">{artifact.name}</h3>
               <p className="text-sm text-gray-600">
-                {artifact.origin} . {artifact.period}
+                CreatedAt: {artifact.createdAt} · DiscoveredAt:{" "}
+                {artifact.discoveredAt}
               </p>
               <p className="text-sm text-gray-600">Likes: {artifact.likes}</p>
               <div className="card-actions justify-start mt-4">

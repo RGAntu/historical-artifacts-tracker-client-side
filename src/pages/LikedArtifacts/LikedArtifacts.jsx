@@ -13,7 +13,7 @@ const LikedArtifacts = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:3000/likedArtifacts?email=${user.email}`)
+        .get(`https://historical-artifacts-tracker-server-six.vercel.app/likedArtifacts?email=${user.email.toLowerCase()}`)
         .then((res) => {
           setLikedArtifacts(res.data);
           setLoadingLiked(false);

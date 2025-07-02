@@ -19,7 +19,9 @@ const ArtifactsDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`https://historical-artifacts-tracker-server-six.vercel.app/artifacts/${id}`)
+      .get(
+        `https://historical-artifacts-tracker-server-six.vercel.app/artifacts/${id}`
+      )
       .then((res) => {
         setArtifact(res.data);
         setHasLiked(res.data.likedBy?.includes(user?.email));
@@ -76,8 +78,8 @@ const ArtifactsDetails = () => {
       <div>
         <div className="max-w-6xl mx-auto p-6 mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
           <Helmet>
-        <title>Artifacts Details | Historical Artifacts Tracker</title>
-      </Helmet>
+            <title>Artifacts Details | Historical Artifacts Tracker</title>
+          </Helmet>
           <img
             src={artifact.imageUrl}
             alt={artifact.name}
@@ -127,12 +129,12 @@ const ArtifactsDetails = () => {
               <h3 className="font-semibold text-lg mb-3">Quick Facts</h3>
               <ul className="text-sm text-gray-700 space-y-1">
                 <li>
-                  <span className="font-bold">Origin:</span>{" "}
-                  {artifact.origin || "N/A"}
+                  <span className="font-bold">CreatedAt:</span>{" "}
+                  {artifact.createdAt || "N/A"}
                 </li>
                 <li>
-                  <span className="font-bold">Period:</span>{" "}
-                  {artifact.period || "N/A"}
+                  <span className="font-bold">DiscoveredAt:</span>{" "}
+                  {artifact.discoveredAt || "N/A"}
                 </li>
                 <li>
                   <span className="font-bold">Current Location:</span>{" "}

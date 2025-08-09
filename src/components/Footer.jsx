@@ -1,6 +1,7 @@
 import React from "react";
 import { FaFacebook, FaGithub, FaInstagram } from "react-icons/fa";
 import { Link } from "react-router";
+import Logo from "./Logo/Logo";
 
 const Footer = () => {
   return (
@@ -10,20 +11,7 @@ const Footer = () => {
         <div className="footer sm:footer-horizontal p-4 max-w-7xl mx-auto">
           <aside>
             <div className="flex items-center gap-1">
-              <div>
-                <Link to="/">
-                  <img
-                    className="w-12 h-12 block  md:block lg:block object-cover"
-                    src="https://i.ibb.co/XZdVQtrg/artifacts-logo.png"
-                    alt="historical-artifacts-tracker"
-                  />
-                </Link>
-              </div>
-              <div>
-                <a className="text-xl text-white font-bold  md:block lg:block">
-                  Historical Artifacts
-                </a>
-              </div>
+                <Logo></Logo>
             </div>
             <p>
               Discover, explore, and preserve the <br /> treasures of human

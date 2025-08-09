@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { IoBookOutline } from "react-icons/io5";
 import { SlLike } from "react-icons/sl";
 import { IoIosLogOut } from "react-icons/io";
+import Logo from "./Logo/Logo";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -41,10 +42,9 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex items-center gap-2">
-          <Link to="/">
-            <img className="w-12 h-12 hidden md:block object-cover" src="https://i.ibb.co/XZdVQtrg/artifacts-logo.png" alt="Logo" />
-          </Link>
-          <span className="text-2xl text-secondary font-bold hidden md:block">Historical Artifacts</span>
+
+          <Logo></Logo>
+
         </div>
       </div>
 

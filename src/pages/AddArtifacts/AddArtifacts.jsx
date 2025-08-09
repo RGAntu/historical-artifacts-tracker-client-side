@@ -72,6 +72,7 @@ const AddArtifacts = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
+            placeholder="Artifact Name"
             className="input input-bordered w-full"
             required
           />
@@ -85,6 +86,7 @@ const AddArtifacts = () => {
             name="imageUrl"
             value={formData.imageUrl}
             onChange={handleChange}
+            placeholder="Paste image URL here"
             className="input input-bordered w-full"
             required
           />
@@ -116,6 +118,7 @@ const AddArtifacts = () => {
             name="historicalContext"
             value={formData.historicalContext}
             onChange={handleChange}
+            placeholder="Historical Context"
             className="input input-bordered w-full"
             required
           />
@@ -128,6 +131,7 @@ const AddArtifacts = () => {
             name="description"
             value={formData.description}
             onChange={handleChange}
+            placeholder="Brief description of the artifact"
             className="textarea textarea-bordered w-full"
             required
           ></textarea>
@@ -139,6 +143,7 @@ const AddArtifacts = () => {
             name="createdAt"
             value={formData.createdAt}
             onChange={handleChange}
+            placeholder="e.g., 196 BC"
             className="input input-bordered w-full"
             required
           />
@@ -152,6 +157,7 @@ const AddArtifacts = () => {
             name="discoveredAt"
             value={formData.discoveredAt}
             onChange={handleChange}
+            placeholder="e.g., 1799"
             className="input input-bordered w-full"
             required
           />
@@ -165,6 +171,7 @@ const AddArtifacts = () => {
             name="discoveredBy"
             value={formData.discoveredBy}
             onChange={handleChange}
+            placeholder="e.g., Pierre-François Bouchard"
             className="input input-bordered w-full"
             required
           />
@@ -178,6 +185,7 @@ const AddArtifacts = () => {
             name="location"
             value={formData.location}
             onChange={handleChange}
+            placeholder="e.g., British Museum, London"
             className="input input-bordered w-full"
             required
           />

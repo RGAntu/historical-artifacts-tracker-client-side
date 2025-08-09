@@ -1,31 +1,43 @@
-import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/AuthContext";
 import { Link, useNavigate } from "react-router";
+import useArtifactApi from "../../api/useArtifactApi";
+import useAuth from "../../hooks/useAuth";
+import useAxiosToken from "../../hooks/useAxiosToken";
 
 const MyArtifacts = () => {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
+
+  const { myArtifactsPromise } = useArtifactApi();
+
+  const axiosToken = useAxiosToken();
+
+  console.log("Token in the context", user.accessToken);
+
   const [artifacts, setArtifacts] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (user?.email) {
-      axios
-        .get(`https://historical-artifacts-tracker-server-six.vercel.app/my-artifacts?email=${user.email}`)
-        .then((res) => setArtifacts(res.data))
-        .catch(() => toast.error("Failed to fetch artifacts"));
+      myArtifactsPromise(user.email)
+        .then((data) => setArtifacts(data))
+        .catch((error) => {
+          console.error(error);
+          toast.error("Failed to fetch artifacts");
+        });
     }
-  }, [user]);
+  }, [user?.email, myArtifactsPromise]);
 
   const handleDelete = async (id) => {
     if (!confirm("Are you sure you want to delete this artifact?")) return;
     try {
-      await axios.delete(`https://historical-artifacts-tracker-server-six.vercel.app/artifacts/${id}`);
+      await axiosToken.delete(`/artifacts/${id}`);
       setArtifacts((prev) => prev.filter((a) => a._id !== id));
       toast.success("Artifact deleted successfully");
       navigate("/allArtifacts");
-    } catch {
+    } catch (error) {
+      console.error(error);
       toast.error("Delete failed");
     }
   };

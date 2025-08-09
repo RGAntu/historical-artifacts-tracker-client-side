@@ -13,6 +13,7 @@ export default {
         primary: '#DB7307',
         secondary: '#111827',
         accent: '#919695',
+        
       },
     },
   },
@@ -24,6 +25,7 @@ export default {
           primary: "#DB7307",
           secondary: "#111827",
           accent: "#919695",
+          
         },
       },
     ],

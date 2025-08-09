@@ -24,7 +24,7 @@ const AllArtifacts = () => {
     return () => clearTimeout(delayDebounce);
   }, [searchTerm]);
   return (
-    <div className="my-10 max-w-7xl mx-auto px-4">
+    <div className="mt-20 max-w-7xl mx-auto px-4">
       <Helmet>
         <title>All Artifacts | Historical Artifacts Tracker</title>
       </Helmet>

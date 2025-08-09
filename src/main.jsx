@@ -9,12 +9,14 @@ import { ToastContainer } from "react-toastify";
 import { HelmetProvider } from "react-helmet-async";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+  <StrictMode> 
+    <div className="bg-[#f9f9f9]">
     <HelmetProvider>
       <AuthProvider>
         <RouterProvider router={router} />
         <ToastContainer />
       </AuthProvider>
       </HelmetProvider>
+    </div>
   </StrictMode>
 );

@@ -55,7 +55,7 @@ const UpdateArtifacts = () => {
               <Helmet>
         <title>Update Artifacts | Historical Artifacts Tracker</title>
       </Helmet>
-      <h2 className="text-2xl font-bold mb-6 text-center">Update Artifact</h2>
+      <h2 className="text-3xl font-bold py-8 text-center">Update Artifact</h2>
       <form onSubmit={handleSubmit} className="grid gap-6 md:grid-cols-2">
         <div>
           <label className="block mb-2 text-sm font-medium">Artifact Name</label>
@@ -96,7 +96,7 @@ const UpdateArtifacts = () => {
           <input type="text" name="location" value={artifact.location} onChange={handleChange} className="input input-bordered w-full" required />
         </div>
         <div className="md:col-span-2">
-          <button type="submit" className="btn btn-primary w-full mt-4">Update Artifact</button>
+          <button type="submit" className="btn btn-primary text-white w-full mt-4">Update Artifact</button>
         </div>
       </form>
     </div>

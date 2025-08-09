@@ -53,11 +53,11 @@ const AddArtifacts = () => {
         });
       }
     } catch (error) {
-      toast.error("Failed to add artifact.");
+      toast.error("Failed to add artifact.", error);
     }
   };
   return (
-    <div className="max-w-4xl mx-auto my-10 p-6 bg-white shadow rounded">
+    <div className="max-w-4xl mx-auto mt-20 p-6 bg-white shadow rounded">
       <Helmet>
         <title>Add Artifacts | Historical Artifacts Tracker</title>
       </Helmet>

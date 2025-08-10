@@ -16,12 +16,12 @@ const FeaturedArtifacts = () => {
   return (
     <div className="my-10 max-w-7xl mx-auto px-4">
       <h2 className="text-4xl font-bold text-center mb-3">Featured Artifacts</h2>
-      <p className="text-xl text-center mb-8">Discover the most beloved artifacts in our collection, chosen by our community of history enthusiasts.</p>
+      <p className="text-lg text-center mb-8">Discover the most beloved artifacts in our collection, chosen by our community of history enthusiasts.</p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {artifacts.map((artifact) => (
           <div
             key={artifact._id}
-            className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-accent dark:border-gray-700"
+            className="max-w-sm bg-white border rounded-lg shadow-sm dark:bg-accent dark:border-gray-200"
           >
             <Link to={`/artifact/${artifact._id}`}>
               <img

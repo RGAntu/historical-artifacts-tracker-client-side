@@ -24,7 +24,7 @@ const AllArtifacts = () => {
     return () => clearTimeout(delayDebounce);
   }, [searchTerm]);
   return (
-    <div className="mt-20 max-w-7xl mx-auto px-4">
+    <div className="py-20 max-w-7xl mx-auto px-4">
       <Helmet>
         <title>All Artifacts | Historical Artifacts Tracker</title>
       </Helmet>
@@ -44,7 +44,7 @@ const AllArtifacts = () => {
         {artifacts.map((artifact) => (
           <div
             key={artifact._id}
-            className="card bg-base-100 border-1 shadow-md"
+            className="card bg-base-100 border-1 border-gray-200 shadow-md"
           >
             <figure>
               <img
@@ -63,7 +63,7 @@ const AllArtifacts = () => {
               <div className="card-actions justify-start mt-4">
                 <Link
                   to={`/artifact/${artifact._id}`}
-                  className="btn btn-primary btn-sm"
+                  className="btn btn-primary text-white btn-sm"
                 >
                   View Detail
                 </Link>

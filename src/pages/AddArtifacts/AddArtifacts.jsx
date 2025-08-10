@@ -57,7 +57,7 @@ const AddArtifacts = () => {
     }
   };
   return (
-    <div className="max-w-4xl mx-auto mt-20 p-6 bg-white shadow rounded">
+    <div className="max-w-4xl mx-auto py-20 bg-white shadow rounded">
       <Helmet>
         <title>Add Artifacts | Historical Artifacts Tracker</title>
       </Helmet>

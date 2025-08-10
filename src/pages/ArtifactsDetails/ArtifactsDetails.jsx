@@ -76,14 +76,14 @@ const ArtifactsDetails = () => {
     <div>
       <Navbar></Navbar>
       <div>
-        <div className="max-w-6xl mx-auto p-6 mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="max-w-7xl mx-auto px-5 md:px-0 pt-35 pb-20 grid grid-cols-1 md:grid-cols-2 gap-6">
           <Helmet>
             <title>Artifacts Details | Historical Artifacts Tracker</title>
           </Helmet>
           <img
             src={artifact.imageUrl}
             alt={artifact.name}
-            className="rounded-3xl w-full object-cover max-h-[450px]"
+            className="rounded-2xl w-full h-full object-cover"
           />
 
           <div>

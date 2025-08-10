@@ -13,7 +13,9 @@ const LikedArtifacts = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`https://historical-artifacts-tracker-server-six.vercel.app/likedArtifacts?email=${user.email.toLowerCase()}`)
+        .get(
+          `https://historical-artifacts-tracker-server-six.vercel.app/likedArtifacts?email=${user.email.toLowerCase()}`
+        )
         .then((res) => {
           setLikedArtifacts(res.data);
           setLoadingLiked(false);
@@ -27,7 +29,7 @@ const LikedArtifacts = () => {
         <title>Liked Artifacts | Historical Artifacts Tracker</title>
       </Helmet>
 
-      <h2 className="text-2xl font-semibold text-center pt-20 mb-4">
+      <h2 className="text-3xl font-bold text-center pt-20 mb-6">
         Liked Artifacts
       </h2>
 

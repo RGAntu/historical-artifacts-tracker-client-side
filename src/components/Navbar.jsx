@@ -29,7 +29,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-secondary  fixed top-0 left-0 w-full z-50">
+    <div className="bg-secondary text-white  fixed top-0 left-0 w-full z-50">
 
     <div className="navbar  shadow-sm max-w-7xl mx-auto">
       <div className="navbar-start">

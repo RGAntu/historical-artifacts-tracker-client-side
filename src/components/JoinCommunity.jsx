@@ -37,7 +37,7 @@ const JoinCommunity = () => {
         backgroundImage: background,
         backgroundColor: "#111827",
       }}
-      className="w-full max-w-7xl mx-auto flex items-center justify-center bg-white dark:bg-gray-900 transition-colors duration-500 my-10 rounded-xl"
+      className="w-full max-w-7xl mx-auto flex items-center justify-center bg-white dark:bg-gray-900 transition-colors duration-500 my-10 p-4 rounded-xl"
     >
       <div className="py-8 px-4 mx-auto w max-w-screen-xl text-center lg:py-16">
         <h1 className="mb-4 text-3xl font-extrabold tracking-tight leading-none text-gray-900 md:text-4xl lg:text-5xl dark:text-white">

@@ -57,11 +57,11 @@ const AddArtifacts = () => {
     }
   };
   return (
-    <div className="max-w-4xl mx-auto py-20 px-5 bg-white shadow rounded">
+    <div className="max-w-7xl mx-auto py-20 px-5 bg-white shadow rounded">
       <Helmet>
         <title>Add Artifacts | Historical Artifacts Tracker</title>
       </Helmet>
-      <h2 className="text-3xl font-bold text-center mb-6">Add New Artifact</h2>
+      <h2 className="text-3xl font-bold text-center my-5 mb-6">Add New Artifact</h2>
       <form onSubmit={handleSubmit} className="grid gap-6 md:grid-cols-2">
         <div>
           <label className="block mb-2 text-sm font-medium">

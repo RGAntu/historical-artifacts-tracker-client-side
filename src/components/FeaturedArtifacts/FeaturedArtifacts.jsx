@@ -14,10 +14,10 @@ const FeaturedArtifacts = () => {
       });
   }, []);
   return (
-    <div className="my-10 max-w-7xl mx-auto px-4">
+    <div className="my-10 max-w-7xl mx-auto px-5">
       <h2 className="text-3xl font-bold text-center mb-3">Featured Artifacts</h2>
       <p className="text-lg text-center mb-8">Discover the most beloved artifacts in our collection, chosen by our community of history enthusiasts.</p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ml-">
         {artifacts.map((artifact) => (
           <div
             key={artifact._id}

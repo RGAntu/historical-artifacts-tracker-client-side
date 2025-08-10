@@ -28,7 +28,7 @@ const AllArtifacts = () => {
       <Helmet>
         <title>All Artifacts | Historical Artifacts Tracker</title>
       </Helmet>
-      <h2 className="text-3xl font-bold mb-6 text-center">All Artifacts</h2>
+      <h2 className="text-3xl font-bold mt-6 mb-6 text-center">All Artifacts</h2>
 
       <div className="mb-6 text-center">
         <input

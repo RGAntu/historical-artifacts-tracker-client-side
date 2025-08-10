@@ -24,7 +24,7 @@ const LikedArtifacts = () => {
     }
   }, [user]);
   return (
-    <div className="max-w-7xl mx-auto p-4 min-h-screen">
+    <div className="max-w-7xl mx-auto py-10 px-5  min-h-screen">
       <Helmet>
         <title>Liked Artifacts | Historical Artifacts Tracker</title>
       </Helmet>

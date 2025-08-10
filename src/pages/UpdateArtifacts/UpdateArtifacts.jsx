@@ -57,7 +57,7 @@ const UpdateArtifacts = () => {
     <div>
       <Navbar></Navbar>
       <div>
-        <div className="max-w-4xl mx-auto my-10 p-6 bg-white shadow rounded">
+        <div className="max-w-7xl mx-auto py-20 px-5 bg-white shadow rounded">
           <Helmet>
             <title>Update Artifacts | Historical Artifacts Tracker</title>
           </Helmet>

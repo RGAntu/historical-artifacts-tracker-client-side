@@ -8,6 +8,7 @@ import Loading from "../../components/Loading";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import { Helmet } from "react-helmet-async";
+import { FaTrash } from "react-icons/fa";
 
 const ArtifactsDetails = () => {
   const { user } = useContext(AuthContext);
@@ -16,6 +17,9 @@ const ArtifactsDetails = () => {
   const [loading, setLoading] = useState(true);
   const [likeDisabled, setLikeDisabled] = useState(false);
   const [hasLiked, setHasLiked] = useState(false);
+
+  // added new
+  const [commentText, setCommentText] = useState("");
 
   useEffect(() => {
     axios
@@ -150,6 +154,106 @@ const ArtifactsDetails = () => {
                 </li>
               </ul>
             </div>
+          </div>
+
+          {/* Comments Section */}
+          <div className="mt-8 border-t pt-4">
+            <h3 className="text-xl font-semibold mb-3">Comments</h3>
+
+            {/* Comment Input */}
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                if (!commentText.trim()) return;
+
+                try {
+                  const res = await axios.post(
+                    `https://historical-artifacts-tracker-server-six.vercel.app/artifacts/${artifact._id}/comments`,
+                    {
+                      text: commentText,
+                      userEmail: user.email,
+                      userName: user.displayName || "Anonymous",
+                    }
+                  );
+
+                  // Add new comment to UI instantly
+                  setArtifact((prev) => ({
+                    ...prev,
+                    comments: [...(prev.comments || []), res.data],
+                  }));
+                  setCommentText("");
+                } catch (err) {
+                  toast.error("Failed to post comment");
+                  console.error(err);
+                }
+              }}
+              className="flex gap-2 mb-4"
+            >
+              <input
+                type="text"
+                value={commentText}
+                onChange={(e) => setCommentText(e.target.value)}
+                placeholder="Write a comment..."
+                className="input input-bordered flex-1"
+              />
+              <button type="submit" className="btn btn-primary">
+                Post
+              </button>
+            </form>
+
+            {/* Comment List */}
+            <ul className="space-y-3">
+              {Array.isArray(artifact.comments) &&
+              artifact.comments.length > 0 ? (
+                artifact.comments.map((comment) => (
+                  <li
+                    key={comment._id}
+                    className="p-3 border rounded-lg flex justify-between items-start bg-gray-50"
+                  >
+                    <div>
+                      <p className="text-gray-800">
+                        <span className="font-semibold">
+                          {comment.userName}
+                        </span>{" "}
+                        <span className="text-gray-500 text-xs">
+                          • {new Date(comment.date).toLocaleString()}
+                        </span>
+                      </p>
+                      <p className="text-gray-700">{comment.text}</p>
+                    </div>
+
+                    {/* Delete Button (only if user is owner) */}
+                    {user?.email === comment.userEmail && (
+                      <button
+                        onClick={async () => {
+                          try {
+                            await axios.delete(
+                              `https://historical-artifacts-tracker-server-six.vercel.app/artifacts/${artifact._id}/comments/${comment._id}`,
+                              { data: { userEmail: user.email } }
+                            );
+                            setArtifact((prev) => ({
+                              ...prev,
+                              comments: prev.comments.filter(
+                                (c) => c._id !== comment._id
+                              ),
+                            }));
+                            toast.success("Comment deleted");
+                          } catch (err) {
+                            toast.error("Failed to delete comment");
+                            console.error(err);
+                          }
+                        }}
+                        className="text-red-500 hover:text-red-700 ml-3"
+                      >
+                        <FaTrash />
+                      </button>
+                    )}
+                  </li>
+                ))
+              ) : (
+                <p className="text-gray-500">No comments yet. Be the first!</p>
+              )}
+            </ul>
           </div>
         </div>
       </div>
